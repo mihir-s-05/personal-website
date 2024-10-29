@@ -105,16 +105,20 @@ const PersonalWebsite = () => {
 
   // Achievement rotation
   useEffect(() => {
+    const progressDuration = 3000; 
+    
     const rotationInterval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentAchievement((prev) => (prev + 1) % achievements.length);
-        setIsTransitioning(false);
-      }, 500);
-    }, 5000);
-
+      if (!isTransitioning) {
+        setIsTransitioning(true);
+        setTimeout(() => {
+          setCurrentAchievement((prev) => (prev + 1) % achievements.length);
+          setIsTransitioning(false);
+        }, 500);
+      }
+    }, progressDuration);
+  
     return () => clearInterval(rotationInterval);
-  }, []);
+  }, [isTransitioning, achievements.length]);
 
   useEffect(() => {
     let timeout;
@@ -304,7 +308,7 @@ const PersonalWebsite = () => {
                       setTimeout(() => {
                         setCurrentAchievement((prev) => (prev - 1 + achievements.length) % achievements.length);
                         setIsTransitioning(false);
-                      }, 500);
+                      }, 1000);
                     }
                   }}
                   className="hidden md:flex absolute -left-16 z-10 w-12 h-12 items-center justify-center rounded-full 
@@ -496,10 +500,21 @@ const PersonalWebsite = () => {
                           }, 500);
                         }
                       }}
-                      className={`h-1 w-8 rounded-full transition-all duration-300 ${
-                        index === currentAchievement ? 'bg-blue-500' : 'bg-gray-700'
+                      className={`relative h-2 rounded-full transition-all duration-300 ${
+                        index === currentAchievement ? 'w-16 bg-gray-700' : 'w-2 bg-gray-700'
                       }`}
-                    />
+                    >
+                      {index === currentAchievement && (
+                        <div
+                          className="absolute left-0 top-0 h-full bg-blue-500 rounded-full transition-all duration-300"
+                          style={{
+                            width: '100%',
+                            animation: 'progress 3s linear',
+                            animationPlayState: isTransitioning ? 'paused' : 'running'
+                          }}
+                        />
+                      )}
+                    </button>
                   ))}
                 </div>
               </div>
@@ -537,6 +552,16 @@ const PersonalWebsite = () => {
         />
       ))}
     </div>
+    <style>{`
+      @keyframes progress {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+    `}</style>
     <style>{`
       @keyframes trace-glow {
         0%, 100% {
