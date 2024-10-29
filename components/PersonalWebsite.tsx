@@ -199,7 +199,7 @@ const PersonalWebsite = () => {
                 </div>
               </div>
               <h2 className="text-4xl font-bold relative z-10 flex justify-center items-center gap-2">
-                 <span className="text-gray-300 whitespace-nowrap">Hi, I'm a</span>
+                 <span className="text-gray-300 whitespace-nowrap">Hi, I&apos;m a</span>
                  <div className="h-[1.5em] inline-flex items-center">
                  <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-blue-500 bg-clip-text text-transparent whitespace-nowrap">
                      {currentText}
@@ -244,13 +244,13 @@ const PersonalWebsite = () => {
             {/* About Section */}
             <div className="space-y-6 animate-fadeIn">
               <p className="text-lg text-gray-300 leading-relaxed">
-                I'm a sophomore at the University of California, Santa Barbara with a passion for softwaredevelopment
+                I&apos;m a sophomore at the University of California, Santa Barbara with a passion for softwaredevelopment
                 and machine learning. My experience spans from developing high-performance distributed systems to
                 creating innovative AI applications.
               </p>
               
               <p className="text-lg text-gray-300 leading-relaxed">
-                I've had the opportunity to work with various technologies and frameworks, contributing to projects
+                I&apos;ve had the opportunity to work with various technologies and frameworks, contributing to projects
                 that won awards and made real-world impact. My recent work includes developing emotion detection systems,
                 creating intuitive mobile applications, and optimizing cloud-based architectures.
               </p>
