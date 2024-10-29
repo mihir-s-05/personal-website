@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Space } from 'lucide-react';
 
 interface Orb {
     x: number;
@@ -243,17 +243,21 @@ const PersonalWebsite = () => {
 
             {/* About Section */}
             <div className="space-y-6 animate-fadeIn">
-              <p className="text-lg text-gray-300 leading-relaxed">
-                I&apos;m a sophomore at the University of California, Santa Barbara with a passion for softwaredevelopment
-                and machine learning. My experience spans from developing high-performance distributed systems to
-                creating innovative AI applications.
-              </p>
-              
-              <p className="text-lg text-gray-300 leading-relaxed">
-                I&apos;ve had the opportunity to work with various technologies and frameworks, contributing to projects
-                that won awards and made real-world impact. My recent work includes developing emotion detection systems,
-                creating intuitive mobile applications, and optimizing cloud-based architectures.
-              </p>
+            <p className="text-lg text-gray-300 leading-relaxed">
+            I&apos;m a sophomore at the University of California, Santa Barbara majoring in Computer Engineering.
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed">  
+            I&apos;ve worked on a variety of projects ranging from emotion detection systems to AI-powered CLI tools. I&apos;m passionate about leveraging technology to solve real-world problems and am always eager to learn new things.
+            </p>
+
+            <p className="text-lg text-gray-300 leading-relaxed">
+            Through my work at Spillbox and the OpenROAD Project, I&apos;ve gained extensive experience in distributed systems and DevOps.
+            Currently, I&apos;m researching parallel patterns in hardware decompilation under Professor Jonathan Balkind through the Early Research Scholars Program.
+            </p>
+
+            <p className="text-lg text-gray-300 leading-relaxed">
+                I&apos;m always open to new opportunities and collaborations, so feel free to reach out to me at  <a href="mailto:m_srivastava@ucsb.edu" className="text-blue-400 hover:underline">m_srivastava@ucsb.edu</a> if you&apos;d like to connect!
+            </p>
 
               <div className="flex flex-wrap gap-3 justify-center py-4">
                 {['Python', 'React Native', 'Machine Learning', 'Computer Vision', 'Go', 'Cloud Computing'].map((skill) => (
