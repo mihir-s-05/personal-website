@@ -292,10 +292,74 @@ const PersonalWebsite = () => {
 
             {/* Featured Projects Carousel */}
             <div className="mt-16 space-y-6">
-            <h3 className="text-2xl font-bold text-center animate-text bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 bg-clip-text text-transparent bg-300% transition-all duration-300">
-              Featured Projects
-            </h3>
+              <h3 className="text-2xl font-bold text-center animate-text bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 bg-clip-text text-transparent bg-300% transition-all duration-300">
+                Featured Projects
+              </h3>
               <div className="relative">
+                {/* Previous Button */}
+                <button
+                  onClick={() => {
+                    if (!isTransitioning) {
+                      setIsTransitioning(true);
+                      setTimeout(() => {
+                        setCurrentAchievement((prev) => (prev - 1 + achievements.length) % achievements.length);
+                        setIsTransitioning(false);
+                      }, 500);
+                    }
+                  }}
+                  className="hidden md:flex absolute -left-16 z-10 w-12 h-12 items-center justify-center rounded-full 
+                    bg-gradient-to-br from-gray-800/80 to-gray-900/80 
+                    backdrop-blur-xl backdrop-saturate-150
+                    border border-gray-700/50
+                    top-1/2 -translate-y-1/2
+                    hover:from-gray-700/80 hover:to-gray-800/80
+                    transition-all duration-300
+                    group"
+                >
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 top-1/2 -translate-y-1/2" />
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-6 w-6 text-gray-400 group-hover:text-white transition-colors" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                {/* Next Button */}
+                <button
+                  onClick={() => {
+                    if (!isTransitioning) {
+                      setIsTransitioning(true);
+                      setTimeout(() => {
+                        setCurrentAchievement((prev) => (prev + 1) % achievements.length);
+                        setIsTransitioning(false);
+                      }, 500);
+                    }
+                  }}
+                  className="hidden md:flex absolute -right-16 z-10 w-12 h-12 items-center justify-center rounded-full 
+                    bg-gradient-to-br from-gray-800/80 to-gray-900/80 
+                    backdrop-blur-xl backdrop-saturate-150
+                    border border-gray-700/50
+                    hover:from-gray-700/80 hover:to-gray-800/80
+                    top-1/2 -translate-y-1/2
+                    transition-all duration-300
+                    group"
+                >
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 top-1/2 -translate-y-1/2" />
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-6 w-6 text-gray-400 group-hover:text-white transition-colors" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
                 <div 
                   className={`transition-all duration-500 transform ${
                     isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
@@ -320,7 +384,6 @@ const PersonalWebsite = () => {
                             {achievements[currentAchievement].title}
                           </h4>
                         </div>
-                        
                         <p className="text-gray-300 mb-4 leading-relaxed">
                           {achievements[currentAchievement].description}
                         </p>
@@ -351,8 +414,8 @@ const PersonalWebsite = () => {
                       </div>
 
                       {/* GitHub Preview */}
-                    {achievements[currentAchievement].link && (
-                    <div className="w-full md:w-80 bg-gray-900/40 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700/50 transition-all duration-300 hover:bg-gray-900/60">
+                      {achievements[currentAchievement].link && (
+                        <div className="w-full md:w-80 mx-auto bg-gray-900/40 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700/50 transition-all duration-300 hover:bg-gray-900/60">
                         <div className="p-4">
                         <div className="flex items-center gap-2 mb-4">
                             <Github size={20} className="text-gray-400" />
@@ -360,7 +423,7 @@ const PersonalWebsite = () => {
                             href={achievements[currentAchievement].link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-400 hover:text-blue-300 transition-colors text-sm font-semibold"
+                            className="text-blue-400 hover:text-blue-300 transition-colors text-sm font-semibold "
                             >
                             {achievements[currentAchievement].link?.split('github.com/')[1]}
                             </a>
