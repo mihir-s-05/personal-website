@@ -10,10 +10,34 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "Mihir Srivastava - Portfolio",
+  title: "Mihir Srivastava",
   description: "Personal portfolio of Mihir Srivastava, a Computer Engineering student at UCSB specializing in machine learning, computer vision, and software development. Featuring projects in emotional analysis, AI tools, and hardware research.",
   keywords: ["Mihir Srivastava", "UCSB", "Computer Engineering", "Software Engineer", "Machine Learning", "Computer Vision", "FacEmotion", "AIHelp CLI"],
   authors: [{ name: "Mihir Srivastava" }],
+  icons: {
+    icon: [
+      {
+        url: '/favicon.ico',
+      },
+      {
+        url: '/favicon-16x16.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+      {
+        url: '/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+    ],
+    apple: [
+      {
+        url: '/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+  },
   robots: {
     index: true,
     follow: true,
