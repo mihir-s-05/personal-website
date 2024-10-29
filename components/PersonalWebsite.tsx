@@ -263,14 +263,16 @@ const PersonalWebsite = () => {
             </p>
 
               <div className="flex flex-wrap gap-3 justify-center py-4">
-                {['Python', 'React Native', 'Machine Learning', 'Computer Vision', 'Go', 'Cloud Computing'].map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-4 py-2 bg-gray-800 rounded-full text-sm text-gray-300 hover:bg-gray-700 transition-colors duration-300"
-                  >
-                    {skill}
-                  </span>
-                ))}
+              {['Python', 'React Native', 'Machine Learning', 'Computer Vision', 'Go', 'Cloud Computing'].map((skill) => (
+                <span
+                  key={skill}
+                  className="relative px-4 py-2 bg-gray-800 rounded-full text-sm text-gray-300 group"
+                >
+                  <span className="relative z-10">{skill}</span>
+                  {/* Glowing border that changes color */}
+                  <span className="absolute inset-0 rounded-full animate-trace-glow" />
+                </span>
+              ))}
               </div>
 
               <div className="text-center pt-8">
@@ -322,14 +324,15 @@ const PersonalWebsite = () => {
                         </div>
 
                         <div className="flex flex-wrap gap-2 mb-4">
-                          {achievements[currentAchievement].tags.map((tag) => (
-                            <span 
-                              key={tag}
-                              className="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300"
-                            >
-                              {tag}
-                            </span>
-                          ))}
+                        {achievements[currentAchievement].tags.map((tag) => (
+                          <span 
+                            key={tag}
+                            className="relative px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300 group"
+                          >
+                            <span className="relative z-10">{tag}</span>
+                            <span className="absolute inset-0 rounded-full animate-trace-glow" />
+                          </span>
+                        ))}
                         </div>
                       </div>
 
@@ -456,7 +459,40 @@ const PersonalWebsite = () => {
         />
       ))}
     </div>
+    <style>{`
+      @keyframes trace-glow {
+        0%, 100% {
+          box-shadow: 0 0 4px 2px rgba(255, 169, 64, 0.8),
+                    0 0 8px 4px rgba(255, 169, 64, 0.6),
+                    0 0 12px 6px rgba(255, 169, 64, 0.4);
+        }
+        25% {
+          box-shadow: 0 0 4px 2px rgba(236, 72, 153, 0.6),
+                    0 0 8px 4px rgba(236, 72, 153, 0.4),
+                    0 0 12px 6px rgba(236, 72, 153, 0.2);
+        }
+        50% {
+          box-shadow: 0 0 4px 2px rgba(147, 51, 234, 0.6),
+                    0 0 8px 4px rgba(147, 51, 234, 0.4),
+                    0 0 12px 6px rgba(147, 51, 234, 0.2);
+        }
+        75% {
+          box-shadow: 0 0 4px 2px rgba(59, 130, 246, 0.6),
+                    0 0 8px 4px rgba(59, 130, 246, 0.4),
+                    0 0 12px 6px rgba(59, 130, 246, 0.2);
+        }
+      }
 
+      .animate-trace-glow {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .group:hover .animate-trace-glow {
+        opacity: 1;
+        animation: trace-glow 3s linear infinite;
+      }
+    `}</style>
         <style>{`
         @keyframes blob {
             0% {
