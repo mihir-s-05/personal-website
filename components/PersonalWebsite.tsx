@@ -263,10 +263,13 @@ const PersonalWebsite = () => {
             </p>
 
               <div className="flex flex-wrap gap-3 justify-center py-4">
-              {['Python', 'React Native', 'Machine Learning', 'Computer Vision', 'Go', 'Cloud Computing'].map((skill) => (
+              {['Python', 'React Native', 'Machine Learning', 'Computer Vision', 'Go', 'Cloud Computing'].map((skill, index) => (
                 <span
                   key={skill}
-                  className="relative px-4 py-2 bg-gray-800 rounded-full text-sm text-gray-300 group"
+                  className="relative px-4 py-2 bg-gray-800 rounded-full text-sm text-gray-300 group hover:transform hover:-translate-y-1 transition-all duration-300"
+                  style={{
+                    animationDelay: `${index * 0.1}s`
+                  }}
                 >
                   <span className="relative z-10">{skill}</span>
                   {/* Glowing border that changes color */}
@@ -289,17 +292,26 @@ const PersonalWebsite = () => {
 
             {/* Featured Projects Carousel */}
             <div className="mt-16 space-y-6">
-              <h3 className="text-2xl font-bold text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                Featured Projects
-              </h3>
+            <h3 className="text-2xl font-bold text-center animate-text bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 bg-clip-text text-transparent bg-300% transition-all duration-300">
+              Featured Projects
+            </h3>
               <div className="relative">
                 <div 
                   className={`transition-all duration-500 transform ${
                     isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
                   }`}
                 >
-                  <div className="bg-gray-800 p-6 rounded-xl">
+                    <div 
+                      className="relative p-6 rounded-xl border border-gray-700/50 
+                        bg-gradient-to-br from-gray-800/80 to-gray-900/80 
+                        backdrop-blur-xl backdrop-saturate-150
+                        shadow-[0_8px_30px_rgb(0,0,0,0.12)]
+                        hover:shadow-[0_8px_30px_rgb(0,0,0,0.24)]
+                        transition-all duration-300"
+                    >
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-purple-500/5 to-blue-500/5" />
                     <div className="flex flex-col md:flex-row gap-6">
+                    <div className="relative z-10">
                       {/* Project Info */}
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-4">
@@ -327,7 +339,9 @@ const PersonalWebsite = () => {
                         {achievements[currentAchievement].tags.map((tag) => (
                           <span 
                             key={tag}
-                            className="relative px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300 group"
+                            className="relative px-3 py-1 bg-gray-800/50 backdrop-blur-sm
+                            rounded-full text-sm text-gray-300 group border border-gray-700/30
+                            hover:bg-gray-700/50 transition-all duration-300"
                           >
                             <span className="relative z-10">{tag}</span>
                             <span className="absolute inset-0 rounded-full animate-trace-glow" />
@@ -338,7 +352,7 @@ const PersonalWebsite = () => {
 
                       {/* GitHub Preview */}
                     {achievements[currentAchievement].link && (
-                    <div className="w-full md:w-80 bg-gray-900 rounded-lg overflow-hidden border border-gray-700">
+                    <div className="w-full md:w-80 bg-gray-900/40 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700/50 transition-all duration-300 hover:bg-gray-900/60">
                         <div className="p-4">
                         <div className="flex items-center gap-2 mb-4">
                             <Github size={20} className="text-gray-400" />
@@ -401,6 +415,7 @@ const PersonalWebsite = () => {
                         </div>
                     </div>
                     )}
+                    </div>
                     </div>
                   </div>
                 </div>

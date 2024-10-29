@@ -13,8 +13,13 @@ module.exports = {
         'spin-slow': 'spin 8s linear infinite',
         'gradient': 'gradient 8s ease infinite',
         'trace-glow': 'trace-glow 3s linear infinite',
+        'text': 'textGradient 5s linear infinite',
       },
       keyframes: {
+        textGradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
         gradient: {
           '0%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
@@ -35,6 +40,7 @@ module.exports = {
           },
         },
       },
+      
     },
   },
   plugins: [],
