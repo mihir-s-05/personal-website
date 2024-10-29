@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Github, Linkedin, Mail, Space } from 'lucide-react';
+import { Analytics } from "@vercel/analytics/react";
 
 interface Orb {
     x: number;
@@ -8,6 +9,8 @@ interface Orb {
     delay: number;
     gradient: string;
 }
+
+
 
 const achievements = [
   {
@@ -473,6 +476,7 @@ const PersonalWebsite = () => {
             animation: blob 15s infinite;
         }
         `}</style>
+        <Analytics />
     </div>
   );
 };
